@@ -43,10 +43,6 @@ namespace WebStore
                 // http://localhost:5000/Products -> controller == "Products" action == "Index"
                 // http://localhost:5000/Products/Page -> controller == "Products" action == "Page"
                 // http://localhost:5000/Products/Page/5 -> controller == "Products" action == "Page" id = "5"
-                //endpoints.MapGet("/", async context =>
-                //{
-                //    await context.Response.WriteAsync("Hello World!");
-                //});
             });
         }
     }
