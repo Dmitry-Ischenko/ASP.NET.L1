@@ -24,6 +24,7 @@
                 <th>Фамилия</th>
                 <th>Имя</th>
                 <th>Возраст</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@
                     <td>@item.LastName</td>
                     <td>@item.FirstName</td>
                     <td>@item.Age</td>
+                    <td><a asp-action="Details" asp-route-id="@item.Id">Детали</a></td>
                 </tr>
             }
         </tbody>

@@ -22,5 +22,10 @@ namespace WebStore.Controllers
         {
             return View(_db.Employees);
         }
+        public IActionResult Details(int id)
+        {
+            var employees = _db.Employees.Where(item => item.Id == id).FirstOrDefault();
+            return View(employees);
+        }
     }
 }
