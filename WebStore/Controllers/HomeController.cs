@@ -24,8 +24,11 @@ namespace WebStore.Controllers
         }
         public IActionResult Details(int id)
         {
-            var employees = _db.Employees.Where(item => item.Id == id).FirstOrDefault();
-            return View(employees);
+            var employees = _db.Employees.FirstOrDefault(item => item.Id == id);
+            if (employees is not null)
+                return View(employees);
+            else
+                return NotFound();
         }
     }
 }
