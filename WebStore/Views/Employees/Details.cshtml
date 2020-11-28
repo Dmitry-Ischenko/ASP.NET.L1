@@ -1,7 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model WebStore.Models.Employee
 
 <!DOCTYPE html>
 
@@ -14,12 +11,14 @@
 <body>
     <div>
         <ul>
-            <li><a href="#">Главная</a></li>
-            <li><a href="~/Home/Employees">Сотрудники</a></li>
+            <li><a asp-action="Index">Главная</a></li>
+            <li><a asp-action="Employees">Сотрудники</a></li>
         </ul>
         <hr />
     </div>
-    <div><h1>Добро пожаловать на сайт</h1></div>
+    <div><h1>@Model.FirstName @Model.LastName</h1>
+        <h2>Возраст: @Model.Age</h2>
+    </div>
     <div><hr /><p><h3>&copy;@DateTime.Now.Year</h3></p></div>
 </body>
 </html>

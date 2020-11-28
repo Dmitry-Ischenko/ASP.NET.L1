@@ -7,10 +7,10 @@ using WebStore.Service;
 
 namespace WebStore.Controllers
 {
-    public class HomeController : Controller
+    public class EmployeesController : Controller
     {
         private readonly TestDB _db;
-        public HomeController(TestDB db)
+        public EmployeesController(TestDB db)
         {
             _db = db;
         }
