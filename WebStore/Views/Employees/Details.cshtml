@@ -1,4 +1,7 @@
-﻿@model WebStore.Models.Employee
+﻿@{
+    Layout = null;
+}
+@model WebStore.Models.Employee
 
 <!DOCTYPE html>
 
@@ -16,8 +19,14 @@
         </ul>
         <hr />
     </div>
-    <div><h1>@Model.FirstName @Model.LastName</h1>
-        <h2>Возраст: @Model.Age</h2>
+    <div>
+        <form method="post">
+            ID: <input type="number" value="@Model.Id" readonly="readonly" name="id"><br>
+            Имя: <input type="text" value="@Model.FirstName" name="FirstName"><br>
+            Фамилия: <input type="text" value="@Model.LastName" name="LastName"><br>
+            Возраст: <input type="number" value="@Model.Age" name="Age"><br>
+            <input type="submit" value="Сохранить" />
+        </form>
     </div>
     <div><hr /><p><h3>&copy;@DateTime.Now.Year</h3></p></div>
 </body>

@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    Layout = null;
+}
 @model IEnumerable<WebStore.Models.Employee>
 
 <!DOCTYPE html>
@@ -17,29 +19,31 @@
         </ul>
         <hr />
     </div>
-    <div><table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Фамилия</th>
-                <th>Имя</th>
-                <th>Возраст</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div>
+        <table>
+            <thead>
                 <tr>
-                    <td>@item.Id</td>
-                    <td>@item.LastName</td>
-                    <td>@item.FirstName</td>
-                    <td>@item.Age</td>
-                    <td><a asp-action="Details" asp-route-id="@item.Id">Детали</a></td>
+                    <th>#</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Возраст</th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-</table></div>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.LastName</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.Age</td>
+                        <td><a asp-action="Details" asp-route-id="@item.Id">Детали</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
     <div><hr /><p><h3>&copy;@DateTime.Now.Year</h3></p></div>
 </body>
 </html>
