@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="OneTech shop project">
-    <meta name="viewport" content="width=device-width, initial-`scale=1">
-    <partial name="Partial/_Styles" />
+    <meta name="viewport" content="width=device-width, initial-`scale=1">    
+    
+    @await RenderSectionAsync("Styles", required: false)
 
 </head>
 
@@ -18,9 +19,7 @@
 
         @RenderBody()
 
-        <partial name="Partial/_Recently_Viewed" />
-
-        <partial name="Partial/_Brands" />
+        
 
 
         <partial name="Partial/_Newsletter" />
@@ -28,8 +27,8 @@
         <partial name="Partial/_Footer" />
         <partial name="Partial/_Copyright" />
     </div>
-
-    <partial name="Partial/_Scripts" />
+    
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
