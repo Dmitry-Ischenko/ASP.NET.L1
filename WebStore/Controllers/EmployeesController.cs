@@ -22,6 +22,18 @@ namespace WebStore.Controllers
         {
             return View(_db.Employees);
         }
+        [HttpPost]
+        public IActionResult DeleteEmployee(int id)
+        {
+            var employees = _db.Employees.FirstOrDefault(item => item.Id == id);
+            if (employees is not null)
+            {
+                _db.Employees.Remove(employees);
+                return RedirectToAction(nameof(Index));
+            }                
+            else
+                return NotFound();
+        }
         public IActionResult Details(int id)
         {
             var employees = _db.Employees.FirstOrDefault(item => item.Id == id);

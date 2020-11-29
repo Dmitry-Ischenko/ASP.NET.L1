@@ -19,13 +19,17 @@
         </ul>
         <hr />
     </div>
-    <div>
-        <form method="post">
-            ID: <input type="number" value="@Model.Id" readonly="readonly" name="id"><br>
+    <div>        
+        <form method="post" id="save">
+            ID: <input type="number" value="@Model.Id" readonly="readonly" name="id" form="del save"><br>
             Имя: <input type="text" value="@Model.FirstName" name="FirstName"><br>
             Фамилия: <input type="text" value="@Model.LastName" name="LastName"><br>
             Возраст: <input type="number" value="@Model.Age" name="Age"><br>
             <input type="submit" value="Сохранить" />
+        </form>
+        <form asp-action="DeleteEmployee" method="post">
+            <input type="number" value="@Model.Id" readonly="readonly" name="id" />
+            <input type="submit" value="Удалить" />
         </form>
     </div>
     <div><hr /><p><h3>&copy;@DateTime.Now.Year</h3></p></div>
