@@ -12,19 +12,5 @@ namespace WebStore.Controllers
         {
             return View();
         }
-
-        public IActionResult Blog() => View();
-
-        public IActionResult Blog_single() => View();
-
-        public IActionResult Cart() => View();
-
-        public IActionResult Contact() => View();
-
-        public IActionResult Product() => View();
-
-        public IActionResult Regular() => View();
-
-        public IActionResult Shop() => View();
     }
 }
