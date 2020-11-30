@@ -32,7 +32,41 @@ namespace WebStore.Controllers
                 return NotFound();
         }
         [HttpPost]
-        public IActionResult Details(IFormCollection form)
+        public IActionResult DeleteEmployee(int id)
+        {
+            var employees = _db.Employees.FirstOrDefault(item => item.Id == id);
+            if (employees is not null)
+            {
+                _db.Employees.Remove(employees);
+                return RedirectToAction(nameof(Employees));
+            }
+            else
+                return NotFound();
+        }
+        [HttpPost]
+        public IActionResult SaveChangeEmployee(int id, string FirstName, string LastName, int Age)
+        {
+            var employees = _db.Employees.FirstOrDefault(item => item.Id == id);
+            if (employees is not null)
+            {
+                if (!employees.FirstName.Equals(FirstName))
+                    employees.FirstName = FirstName;
+                if (!employees.LastName.Equals(FirstName))
+                    employees.LastName = LastName;
+                if (employees.Age != Age)
+                    employees.Age = Age;
+                return View(employees);
+            }
+            else
+                return NotFound();
+        }
+        /// <summary>
+        /// Оставлю здесь, вариант нарушающий подход CRUD-интерфейса
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult SaveOrDelete(IFormCollection form)
         {
             if (form.TryGetValue("id",out var idStr))
             {

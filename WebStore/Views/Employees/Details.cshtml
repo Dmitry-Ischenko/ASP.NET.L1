@@ -19,13 +19,25 @@
         </ul>
         <hr />
     </div>
-    <div>        
-        <form method="post">
+    <div>
+        @* Оставлю здесь, вариант нарушающий подход CRUD-интерфейса *@
+        <form method="post" asp-action="SaveOrDelete">
             ID: <input type="number" value="@Model.Id" readonly="readonly" name="id"><br>
             Имя: <input type="text" value="@Model.FirstName" name="FirstName"><br>
             Фамилия: <input type="text" value="@Model.LastName" name="LastName"><br>
             Возраст: <input type="number" value="@Model.Age" name="Age"><br>
-            <input type="submit" value="Сохранить" name="save"/><input type="submit" value="Удалить" name="del"/>
+            <input type="submit" value="Сохранить" name="save" /><input type="submit" value="Удалить" name="del" />
+        </form>
+        <hr />
+        <form method="post" id="save" asp-action="SaveChangeEmployee">
+            ID: <input type="number" value="@Model.Id" readonly="readonly" name="id"><br>
+            Имя: <input type="text" value="@Model.FirstName" name="FirstName"><br>
+            Фамилия: <input type="text" value="@Model.LastName" name="LastName"><br>
+            Возраст: <input type="number" value="@Model.Age" name="Age"><br>
+            <input type="submit" value="Сохранить" /><button type="submit" form="del">Удалить</button>
+        </form>
+        <form asp-action="DeleteEmployee" method="post" id="del">
+            <input type="number" value="@Model.Id" readonly="readonly" name="id" hidden="hidden">
         </form>
     </div>
     <div><hr /><p><h3>&copy;@DateTime.Now.Year</h3></p></div>
