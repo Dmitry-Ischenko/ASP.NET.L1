@@ -20,7 +20,9 @@ namespace WebStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddSingleton<IEmployeesData, InMemoiryEmployeesData>();
+            services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            //InMemoryBlogsData: IBlogsData
+            services.AddSingleton<IBlogsData, InMemoryBlogsData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
