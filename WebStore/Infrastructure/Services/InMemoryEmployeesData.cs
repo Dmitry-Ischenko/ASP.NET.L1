@@ -7,11 +7,11 @@ using WebStore.Models;
 
 namespace WebStore.Infrastructure.Services
 {
-    public class InMemoiryEmployeesData : IEmployeesData
+    public class InMemoryEmployeesData : IEmployeesData
     {
         private List<Employee> _Employees;
 
-        public InMemoiryEmployeesData()
+        public InMemoryEmployeesData()
         {
             Initialization();
         }
