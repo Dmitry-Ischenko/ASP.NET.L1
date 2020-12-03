@@ -25,7 +25,7 @@ namespace WebStore.Infrastructure.Services
                 Rating = 10,
                 Id = 1,
                 ImageBackground = "/images/blog_single_background.jpg",
-                PreviewImage = "images/blog_1.jpg",
+                PreviewImage = "/images/blog_1.jpg",
                 Header = "Вася пупкин ограбил магазин Ситилинка",
                 BodyHtml = @"<p>Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec maximus est sollicitudin. Praesent at tempus lectus, eleifend blandit felis. Fusce augue arcu, consequat a nisl aliquet, consectetur elementum turpis. Donec iaculis lobortis nisl, et viverra risus imperdiet eu. Etiam mollis posuere elit non sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis arcu a magna sodales venenatis. Integer non diam sit amet magna luctus mollis ac eu nisi. In accumsan tellus ut dapibus blandit.</p>
 <div class=""single_post_quote text - center"">
