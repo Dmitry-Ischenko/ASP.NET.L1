@@ -10,12 +10,22 @@ namespace WebStore.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// Дата создания поста (размещения)
+        /// Дата создания поста
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTime DateCreate { get; set; }
 
         /// <summary>
-        /// Рейтинг поста (лайки/дизы)
+        /// Дата размещения (с этой даты, пост будет отображатся)
+        /// </summary>
+        public DateTime DatePublication { get; set; }
+
+        /// <summary>
+        /// Дата редактирования поста
+        /// </summary>
+        public DateTime DateLastEdit { get; set; }
+
+        /// <summary>
+        /// Рейтинг поста (лайки/дизы/либо просмотры?)
         /// </summary>
         public int Rating { get; set; }
         /// <summary>
