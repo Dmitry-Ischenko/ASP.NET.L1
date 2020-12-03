@@ -7,10 +7,8 @@ using WebStore.ViewModels.Base;
 
 namespace WebStore.ViewModels
 {
-    public class BlogSingelPostViewModel: ViewModel
+    public class BlogsViewModel: ViewModel
     {
-        public BlogPost Blog { get; set; }
-
         public IEnumerable<BlogPost> Blogs { get; set; }
     }
 }
