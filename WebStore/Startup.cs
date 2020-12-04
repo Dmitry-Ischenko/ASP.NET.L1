@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebStore.Service;
 
 namespace WebStore
 {
@@ -16,11 +17,14 @@ namespace WebStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+            services.AddSingleton<TestDB>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,TestDB db)
         {
+            db.Init();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -28,12 +32,17 @@ namespace WebStore
 
             app.UseRouting();
 
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllerRoute(
+                    name:"default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                // http://localhost:5000 -> controller == "Home" action == "Index"
+                // http://localhost:5000/Products -> controller == "Products" action == "Index"
+                // http://localhost:5000/Products/Page -> controller == "Products" action == "Page"
+                // http://localhost:5000/Products/Page/5 -> controller == "Products" action == "Page" id = "5"
             });
         }
     }
