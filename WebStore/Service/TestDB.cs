@@ -77,7 +77,7 @@ namespace WebStore.Service
                 };
         #endregion
 
-        public static List<Employee> Employees { get; } = Enumerable.Range(1, 100)
+        public static List<Employee> Employees { get; } = Enumerable.Range(1, 10)
             .Select(i => new Employee
             {
                 Id = i,
