@@ -81,7 +81,7 @@ namespace WebStore.Service
             .Select(i => new Employee
             {
                 Id = i,
-                FirstName = __firstName[_rand.Next(0, __lastName.Length)],
+                FirstName = __firstName[_rand.Next(0, __firstName.Length)],
                 LastName = __lastName[_rand.Next(0, __lastName.Length)],
                 Age = _rand.Next(20, 50)
             }).ToList();

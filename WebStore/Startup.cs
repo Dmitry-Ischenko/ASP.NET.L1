@@ -21,12 +21,13 @@ namespace WebStore
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            services.AddTransient<IProductData, InMemoryProductsData>();
             //InMemoryBlogsData: IBlogsData
             services.AddSingleton<IBlogsData, InMemoryBlogsData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IEmployeesData db)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {            
             if (env.IsDevelopment())
             {

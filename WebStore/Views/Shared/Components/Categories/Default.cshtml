@@ -17,14 +17,14 @@
                     <ul>
                         @foreach (var ChildCategory in item.CildCategory)
                         {
-                            <li><a asp-controller="Shop" asp-action="Index" asp-route-SectionId="@ChildCategory.Id">@ChildCategory.Name<i class="fas fa-chevron-right"></i></a></li>
+                            <li><a asp-controller="Shop" asp-action="Index" asp-route-CategoryId="@ChildCategory.Id">@ChildCategory.Name<i class="fas fa-chevron-right"></i></a></li>
                         }
                     </ul>
                 </li>
             }
             else
             {
-                <li><a asp-controller="Shop" asp-action="Index" asp-route-SectionId="@item.Id">@item.Name<i class="fas fa-chevron-right ml-auto"></i></a></li>
+                <li><a asp-controller="Shop" asp-action="Index" asp-route-CategoryId="@item.Id">@item.Name<i class="fas fa-chevron-right ml-auto"></i></a></li>
             }
         }
     </ul>
