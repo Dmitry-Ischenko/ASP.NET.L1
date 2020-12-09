@@ -13,6 +13,6 @@ namespace WebStore.ViewModels
 
         public IEnumerable<Brand> Brands { get; set; }
 
-        public IEnumerable<Сategory> Сategories { get; set; }
+        public IEnumerable<CategoriesViewModel> Categories { get; set; }
     }
 }

@@ -130,77 +130,77 @@ namespace WebStore.Service
             },
         };
 
-        public static IEnumerable<Сategory> Сategories { get; } = new []
+        public static IEnumerable<Category> Сategories { get; } = new []
         {
-            new Сategory
+            new Category
             {
                 Id = 1,Name="Смартфоны и гаджеты",Order =0
             },
-            new Сategory
+            new Category
             {
                 Id = 2,Name="Смартфоны",Order = 1,ParentId = 1
             },
-            new Сategory
+            new Category
             {
                 Id = 3,Name="Планшеты",Order = 2,ParentId = 1
             },
-            new Сategory
+            new Category
             {
                 Id = 4,Name="Гаджеты",Order = 3,ParentId = 1
             },
-            new Сategory
+            new Category
             {
                 Id = 5,Name="Наушники",Order = 4,ParentId = 1
             },
-            new Сategory
+            new Category
             {
                 Id = 6,Name="Ноутбуки и компьютеры",Order = 5
             },
-            new Сategory
+            new Category
             {
                 Id = 7,Name="Ноутбуки",Order = 6,ParentId = 6
             },
-            new Сategory
+            new Category
             {
                 Id = 8,Name="Моноблоки",Order = 7,ParentId = 6
             },
-            new Сategory
+            new Category
             {
                 Id = 9,Name="Комплектующие для ПК",Order = 8,ParentId = 6
             },
-            new Сategory
+            new Category
             {
                 Id = 10,Name="Процессоры",Order = 9,ParentId = 9
             },
-            new Сategory
+            new Category
             {
                 Id = 11,Name="Материнские платы",Order = 10,ParentId = 9
             },
-            new Сategory
+            new Category
             {
                 Id = 12,Name="Видеокарты",Order = 11,ParentId = 9
             },
-            new Сategory
+            new Category
             {
                 Id = 13,Name="Блоки питания",Order = 12,ParentId = 9
             },
-            new Сategory
+            new Category
             {
                 Id = 14,Name="Телевизоры, аудио-видео",Order = 13
             },
-            new Сategory
+            new Category
             {
                 Id = 15,Name="Телевизоры",Order = 14,ParentId = 14
             },
-            new Сategory
+            new Category
             {
                 Id = 16,Name="Видеотехника",Order = 15,ParentId = 14
             },
-            new Сategory
+            new Category
             {
                 Id = 17,Name="Аудиотехника",Order = 16,ParentId = 14
             },
-            new Сategory
+            new Category
             {
                 Id = 18,Name="Фитнес-браслеты",Order = 17,ParentId = 4
             },

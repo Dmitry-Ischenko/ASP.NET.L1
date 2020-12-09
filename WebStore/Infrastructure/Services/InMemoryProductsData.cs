@@ -13,7 +13,7 @@ namespace WebStore.Infrastructure.Services
     {
         public IEnumerable<Brand> GetBrands() => TestDB.Brands;
 
-        public IEnumerable<Сategory> GetСategories() => TestDB.Сategories;
+        public IEnumerable<Category> GetСategories() => TestDB.Сategories;
 
         public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
         {
