@@ -14,12 +14,12 @@ namespace WebStore.Controllers
         private readonly IProductData _ProductData;
 
         public ShopController(IProductData ProductData) => _ProductData = ProductData;
-        public IActionResult Index(int? BrandId, int? СategoryId)
+        public IActionResult Index(int? BrandId, int? CategoryID)
         {
             var filter = new ProductFilter
             {
                 BrandId = BrandId,
-                СategoryId = СategoryId,
+                СategoryId = CategoryID,
 
             };
             var productc = _ProductData.GetProducts(filter);
