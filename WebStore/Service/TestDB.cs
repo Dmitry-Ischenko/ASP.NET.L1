@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using WebStore.Models;
+using WebStore.Domain.Entityes;
 
 namespace WebStore.Service
 {
@@ -128,5 +129,128 @@ namespace WebStore.Service
 <p>Ключевым элементом практически каждой вычислительной схемы является транзистор. Это полупроводниковый элемент, который служит для управления токами. Из транзисторов собираются основные логические элементы, а на их основе создаются различные комбинационные схемы и уже непосредственно процессоры.</p>"
             },
         };
+
+        public static List<Сategory> Сategories { get; } = new List<Сategory>()
+        {
+            new Сategory
+            {
+                Id = 1,Name="Смартфоны и гаджеты",Order =0
+            },
+            new Сategory
+            {
+                Id = 2,Name="Смартфоны",Order = 1,ParentId = 1
+            },
+            new Сategory
+            {
+                Id = 3,Name="Планшеты",Order = 2,ParentId = 1
+            },
+            new Сategory
+            {
+                Id = 4,Name="Гаджеты",Order = 3,ParentId = 1
+            },
+            new Сategory
+            {
+                Id = 5,Name="Наушники",Order = 4,ParentId = 1
+            },
+            new Сategory
+            {
+                Id = 6,Name="Ноутбуки и компьютеры",Order = 5
+            },
+            new Сategory
+            {
+                Id = 7,Name="Ноутбуки",Order = 6,ParentId = 6
+            },
+            new Сategory
+            {
+                Id = 8,Name="Моноблоки",Order = 7,ParentId = 6
+            },
+            new Сategory
+            {
+                Id = 9,Name="Комплектующие для ПК",Order = 8,ParentId = 6
+            },
+            new Сategory
+            {
+                Id = 10,Name="Процессоры",Order = 9,ParentId = 9
+            },
+            new Сategory
+            {
+                Id = 11,Name="Материнские платы",Order = 10,ParentId = 9
+            },
+            new Сategory
+            {
+                Id = 12,Name="Видеокарты",Order = 11,ParentId = 9
+            },
+            new Сategory
+            {
+                Id = 13,Name="Блоки питания",Order = 12,ParentId = 9
+            },
+            new Сategory
+            {
+                Id = 14,Name="Телевизоры, аудио-видео",Order = 13
+            },
+            new Сategory
+            {
+                Id = 15,Name="Телевизоры",Order = 14,ParentId = 14
+            },
+            new Сategory
+            {
+                Id = 16,Name="Видеотехника",Order = 15,ParentId = 14
+            },
+            new Сategory
+            {
+                Id = 17,Name="Аудиотехника",Order = 16,ParentId = 14
+            },
+            new Сategory
+            {
+                Id = 18,Name="Фитнес-браслеты",Order = 17,ParentId = 4
+            },
+        };
+
+        public static List<Brand> Brands { get; } = new List<Brand>()
+        {
+            new Brand
+            {
+                Id = 1,
+                Name = "APPLE"
+            },
+            new Brand
+            {
+                Id = 2, Name="SAMSUNG"
+            },
+            new Brand
+            {
+                Id = 3, Name="XIAOMI"
+            },
+            new Brand
+            {
+                Id = 4, Name="ZTE"
+            },
+            new Brand
+            {
+                Id = 5, Name="HONOR"
+            },
+            new Brand
+            {
+                Id = 6, Name="AMD"
+            },
+            new Brand
+            {
+                Id = 7, Name="INTEL"
+            },
+            new Brand
+            {
+                Id = 8, Name="GIGABYTE"
+            },
+            new Brand
+            {
+                Id = 9, Name="ASUS"
+            },
+            new Brand
+            {
+                Id = 10, Name="CREATIVE"
+            },
+        };
+
+
     }
 }

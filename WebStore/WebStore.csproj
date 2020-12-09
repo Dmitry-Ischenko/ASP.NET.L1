@@ -11,6 +11,11 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Blog\Images\" />
+    <Folder Include="wwwroot\images\Products\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebStore.Domain\WebStore.Domain.csproj" />
   </ItemGroup>
 
 </Project>
