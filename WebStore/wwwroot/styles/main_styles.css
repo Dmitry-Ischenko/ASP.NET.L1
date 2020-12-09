@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -746,7 +746,7 @@ select option
 }
 .wishlist
 {
-	margin-right: 50px;
+	margin-right: 20px;
 }
 .wishlist_icon img
 {
