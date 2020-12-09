@@ -5,6 +5,7 @@ using System.Linq;
 using WebStore.Domain;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.ViewModels;
+using WebStore.Domain.Entityes;
 
 namespace WebStore.Controllers
 {
@@ -24,13 +25,49 @@ namespace WebStore.Controllers
             var productc = _ProductData.GetProducts(filter);
             var brends = _ProductData.GetBrands();
             var categories = _ProductData.GetСategories();
+            
+
+
 
             return View(new ShopViewModel
             {
                 Products = productc,
                 Brands = brends,
-                Сategories = categories,
+                Categories = Categories(categories),
             });
+        }
+
+        private IEnumerable<CategoriesViewModel> Categories(IEnumerable<Category> Icategories)
+        {
+            var categories = Icategories;
+
+            var parrent_categories = categories.Where(s => s.ParentId is null);
+
+            var parrent_categories_views = parrent_categories
+                .Select(s => new CategoriesViewModel
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Order = s.Order,
+                }).ToList();
+            foreach (var item in parrent_categories_views)
+            {
+                var childs = categories.Where(s => s.ParentId == item.Id);
+                foreach (var child in childs)
+                {
+                    item.CildCategory.Add(new CategoriesViewModel
+                    {
+                        Id = child.Id,
+                        Name = child.Name,
+                        Order = child.Order,
+                        ParentCategory = item
+                    });
+                }
+                item.CildCategory.Sort((a, b) => Comparer<int>.Default.Compare(a.Order, b.Order));
+            }
+            parrent_categories_views.Sort((a, b) => Comparer<int>.Default.Compare(a.Order, b.Order));
+
+            return parrent_categories_views;
         }
         public IActionResult Product()
         {
