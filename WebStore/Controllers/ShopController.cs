@@ -69,9 +69,25 @@ namespace WebStore.Controllers
 
             return parrent_categories_views;
         }
-        public IActionResult Product()
+        public IActionResult Product(int id)
         {
-            return View();
+            var product = _ProductData.GetProducts().FirstOrDefault(item => item.Id == id);
+            if (product is null)
+                return NotFound();
+            var category = _ProductData.GetСategories()
+                .FirstOrDefault(item => item.Id == product.CategoryId);
+            var brand = _ProductData.GetBrands()
+                .FirstOrDefault(item => item.Id == product.BrandId);
+            return View(new ProductViewModel { 
+             Brand = brand,
+             Category = category,
+             Name = product.Name,
+             Price = product.Price,
+             Description = product.Description,
+             ImageUrl = product.ImageUrl,
+             Id = product.Id,
+
+            });
         }
     }
 }
