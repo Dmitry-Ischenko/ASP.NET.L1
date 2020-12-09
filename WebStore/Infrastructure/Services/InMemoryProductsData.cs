@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebStore.Domain;
 using WebStore.Domain.Entityes;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Service;
@@ -14,9 +15,15 @@ namespace WebStore.Infrastructure.Services
 
         public IEnumerable<Сategory> GetСategories() => TestDB.Сategories;
 
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
         {
-            throw new NotImplementedException();
+            var query = TestDB.Products;
+
+            if (Filter?.СategoryId is { } category_id)
+                query = query.Where(product => product.CategoryId == category_id).ToList();  
+            if(Filter?.BrandId is { } brand_id)
+                query = query.Where(product => product.BrandId == brand_id).ToList();
+            return query;
         }
     }
 }

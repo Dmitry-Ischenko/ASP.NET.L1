@@ -10,7 +10,7 @@ namespace WebStore.Infrastructure.Services
 {
     public class InMemoryBlogsData: IBlogsData
     {
-        private List<BlogPost> _Blogs = TestDB.Blogs;
+        private IEnumerable<BlogPost> _Blogs = TestDB.Blogs;
 
         public int Add(BlogPost blogPost)
         {

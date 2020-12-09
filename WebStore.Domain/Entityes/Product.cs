@@ -7,7 +7,7 @@ namespace WebStore.Domain.Entityes
     {
         public int Order { get; set; }
 
-        public int СategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public int? BrandId { get; set; }
 

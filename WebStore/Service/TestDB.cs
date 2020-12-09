@@ -77,16 +77,16 @@ namespace WebStore.Service
                 };
         #endregion
 
-        public static List<Employee> Employees { get; } = Enumerable.Range(1, 10)
+        public static IEnumerable<Employee> Employees { get; } = Enumerable.Range(1, 10)
             .Select(i => new Employee
             {
                 Id = i,
                 FirstName = __firstName[_rand.Next(0, __firstName.Length)],
                 LastName = __lastName[_rand.Next(0, __lastName.Length)],
                 Age = _rand.Next(20, 50)
-            }).ToList();
+            }).ToArray();
 
-        public static List<BlogPost> Blogs { get; } = new List<BlogPost>()
+        public static IEnumerable<BlogPost> Blogs { get; } = new []
         {
             new BlogPost
             {
@@ -130,7 +130,7 @@ namespace WebStore.Service
             },
         };
 
-        public static List<Сategory> Сategories { get; } = new List<Сategory>()
+        public static IEnumerable<Сategory> Сategories { get; } = new []
         {
             new Сategory
             {
@@ -206,7 +206,7 @@ namespace WebStore.Service
             },
         };
 
-        public static List<Brand> Brands { get; } = new List<Brand>()
+        public static IEnumerable<Brand> Brands { get; } = new []
         {
             new Brand
             {
@@ -251,12 +251,12 @@ namespace WebStore.Service
             },
         };
 
-        public static List<Product> Products { get; } = new List<Product>()
+        public static IEnumerable<Product> Products { get; } = new []
         {
             new Product
             {
                 Id=1,
-                СategoryId=2,
+                CategoryId=2,
                 BrandId=1,
                 Price=54490,
                 Name=@"Смартфон APPLE iPhone 11 64Gb, MWLT2RU/A, черный", 
@@ -266,7 +266,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=2,
-                СategoryId=2,
+                CategoryId=2,
                 BrandId=2,
                 Price=20490,
                 Name=@"Смартфон SAMSUNG Galaxy A51 64Gb, SM-A515F, черный", 
@@ -276,7 +276,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=3,
-                СategoryId=2,
+                CategoryId=2,
                 BrandId=3,
                 Price=22990,
                 Name=@"Смартфон XIAOMI Redmi Note 9 Pro 6/128Gb, зеленый", 
@@ -286,7 +286,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=4,
-                СategoryId=2,
+                CategoryId=2,
                 BrandId=4,
                 Price=12490,
                 Name=@"Смартфон ZTE Blade 20 Smart 128Gb, темный изумруд", 
@@ -296,7 +296,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=5,
-                СategoryId=2,
+                CategoryId=2,
                 BrandId=5,
                 Price=10390,
                 Name=@"Смартфон HONOR 9A 64Gb, черный", 
@@ -306,7 +306,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=6,
-                СategoryId=3,
+                CategoryId=3,
                 BrandId=1,
                 Price=29900,
                 Name=@"Планшет APPLE iPad 2020 32Gb Wi-Fi MYL92RU/A, 32GB, iOS темно-серый", 
@@ -316,7 +316,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=7,
-                СategoryId=3,
+                CategoryId=3,
                 BrandId=2,
                 Price=25990,
                 Name=@"Планшет SAMSUNG Galaxy Tab S6 Lite SM-P610N, 4GB, 64GB, Android 10.0 серый [sm-p610nzaaser]", 
@@ -326,7 +326,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=8,
-                СategoryId=3,
+                CategoryId=3,
                 BrandId=5,
                 Price=28990,
                 Name=@"Планшет HONOR Pad V6, 6ГБ, 128GB, Android 10.0 черный [53011eta]", 
@@ -336,7 +336,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=9,
-                СategoryId=18,
+                CategoryId=18,
                 BrandId=3,
                 Price=2120,
                 Name=@"Фитнес-трекер XIAOMI Band 4 XMSH07HM, 0.95"", черный / черный [mgw4057ru]", 
@@ -346,7 +346,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=10,
-                СategoryId=5,
+                CategoryId=5,
                 BrandId=1,
                 Price=12990,
                 Name=@"Гарнитура APPLE AirPods, with Charging Case, Bluetooth, вкладыши, белый [mv7n2ru/a]", 
@@ -356,7 +356,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=11,
-                СategoryId=7,
+                CategoryId=7,
                 BrandId=1,
                 Price=70990,
                 Name=@"Ноутбук APPLE MacBook Air 13.3"", Intel Core i5 5350U 1.8ГГц, 8ГБ, 128ГБ SSD, Intel HD Graphics 6000, Mac OS X El Capitan, MQD32RU/A, серебристый", 
@@ -366,7 +366,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=12,
-                СategoryId=7,
+                CategoryId=7,
                 BrandId=5,
                 Price=5990,
                 Name=@"Ультрабук HONOR MagicBook Pro HLY-W19R, 16.1"", IPS, AMD Ryzen 5 3550H 2.1ГГц, 8ГБ, 512ГБ SSD, AMD Radeon Vega 8, Windows 10, 53010TSA, серый", 
@@ -376,7 +376,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=13,
-                СategoryId=8,
+                CategoryId=8,
                 BrandId=1,
                 Price=118890,
                 Name=@"Моноблок APPLE iMac MRT42RU/A, 21.5"", Intel Core i5 8500, 8ГБ, 1000ГБ, AMD Radeon Pro 560X - 4096 Мб, Mac OS, серебристый и черный", 
@@ -386,7 +386,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=14,
-                СategoryId=10,
+                CategoryId=10,
                 BrandId=6,
                 Price=10790,
                 Name=@"Процессор AMD Ryzen 5 2600, SocketAM4, OEM [yd2600bbm6iaf]", 
@@ -396,7 +396,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=15,
-                СategoryId=10,
+                CategoryId=10,
                 BrandId=7,
                 Price=12390,
                 Name=@"Процессор INTEL Core i5 9400F, LGA 1151v2, OEM [cm8068403358819s rf6m]", 
@@ -406,7 +406,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=16,
-                СategoryId=11,
+                CategoryId=11,
                 BrandId=8,
                 Price=5290,
                 Name=@"Материнская плата GIGABYTE B450M S2H, SocketAM4, AMD B450, mATX, Ret", 
@@ -416,7 +416,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=17,
-                СategoryId=11,
+                CategoryId=11,
                 BrandId=9,
                 Price=4690,
                 Name=@"Материнская плата ASUS PRIME H310M-R R2.0, LGA 1151v2, Intel H310, mATX, Ret (White Box)", 
@@ -426,7 +426,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=18,
-                СategoryId=12,
+                CategoryId=12,
                 BrandId=8,
                 Price=21400,
                 Name=@"Видеокарта GIGABYTE nVidia GeForce GTX 1660 , GV-N1660OC-6GD, 6ГБ, GDDR5, OC, Ret", 
@@ -436,7 +436,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=19,
-                СategoryId=13,
+                CategoryId=13,
                 BrandId=8,
                 Price=7740,
                 Name=@"Блок питания GIGABYTE GP-P750GM, 750Вт, 120мм, черный, retail [28200-p750g-1eur]", 
@@ -446,7 +446,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=20,
-                СategoryId=15,
+                CategoryId=15,
                 BrandId=3,
                 Price=23990,
                 Name=@"Телевизор XIAOMI Mi TV 4S 43, 43"", Ultra HD 4K", 
@@ -456,7 +456,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=21,
-                СategoryId=16,
+                CategoryId=16,
                 BrandId=3,
                 Price=5700,
                 Name=@"Медиаплеер XIAOMI Mi TV Box S", 
@@ -466,7 +466,7 @@ namespace WebStore.Service
             new Product
             {
                 Id=22,
-                СategoryId=17,
+                CategoryId=17,
                 BrandId=10,
                 Price=4540,
                 Name=@"Колонки CREATIVE T3250W, 2.1, черный [51mf0450aa000]", 

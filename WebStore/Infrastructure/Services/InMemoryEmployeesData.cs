@@ -10,7 +10,7 @@ namespace WebStore.Infrastructure.Services
 {
     public class InMemoryEmployeesData : IEmployeesData
     {
-        private List<Employee> _Employees = TestDB.Employees;
+        private List<Employee> _Employees = TestDB.Employees.ToList();
 
 
         public int Add(Employee employee)
