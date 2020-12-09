@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebStore.Components
 {
-    public class CategoryViewComponent
+    public class CategoriesViewComponent
     {
     }
 }
