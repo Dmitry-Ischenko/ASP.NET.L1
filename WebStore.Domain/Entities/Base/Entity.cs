@@ -1,4 +1,6 @@
-﻿using WebStore.Domain.Entities.Base.Interfaces;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using WebStore.Domain.Entities.Base.Interfaces;
 
 namespace WebStore.Domain.Entities.Base
 {
