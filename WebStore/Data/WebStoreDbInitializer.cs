@@ -61,9 +61,9 @@ namespace WebStore.Data
             {
                 _db.Categories.AddRange(TestDB.Сategories);
 
-                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Sections] ON");
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Сategories] ON");
                 _db.SaveChanges();
-                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Sections] OFF");
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Сategories] OFF");
 
                 _db.Database.CommitTransaction();
             }
@@ -71,9 +71,9 @@ namespace WebStore.Data
             using(_db.Database.BeginTransaction())
             {
                 _db.Brands.AddRange(TestDB.Brands);
-                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Sections] ON");
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Brands] ON");
                 _db.SaveChanges();
-                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Sections] OFF");
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Brands] OFF");
 
                 _db.Database.CommitTransaction();
             }
@@ -82,9 +82,9 @@ namespace WebStore.Data
             using (_db.Database.BeginTransaction())
             {
                 _db.Products.AddRange(TestDB.Products);
-                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Sections] ON");
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Products] ON");
                 _db.SaveChanges();
-                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Sections] OFF");
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Products] OFF");
 
                 _db.Database.CommitTransaction();
             }
