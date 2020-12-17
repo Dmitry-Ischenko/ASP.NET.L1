@@ -39,6 +39,12 @@ namespace WebStore.Data
             {
                 InitializePdroducts();
             }
+            catch (Exception e)
+            {
+                _Logger.LogError(e, "Ошибка при инициализации БД данными каталога товаров");
+
+                throw;
+            }
         }
 
         private void InitializePdroducts()
