@@ -15,6 +15,6 @@ namespace WebStore.Domain.Entities
         [ForeignKey(nameof(ParentId))]
         public Category Perent { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }
