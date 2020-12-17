@@ -14,6 +14,7 @@ using WebStore.Data;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.Services;
 using WebStore.Service;
+using WebStore.Infrastructure.Services.InSql;
 
 namespace WebStore
 {
@@ -30,7 +31,8 @@ namespace WebStore
             services.AddTransient<WebStoreDbInitializer>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
-            services.AddTransient<IProductData, InMemoryProductsData>();
+            //services.AddTransient<IProductData, InMemoryProductsData>();
+            services.AddTransient<IProductData, InSqIProductData>();
             //InMemoryBlogsData: IBlogsData
             services.AddSingleton<IBlogsData, InMemoryBlogsData>();
         }

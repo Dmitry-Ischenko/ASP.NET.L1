@@ -19,14 +19,19 @@ namespace WebStore.Infrastructure.Services.InSql
             _db = db;
         }
 
-        public IEnumerable<Brand> GetBrands()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Brand> GetBrands() => _db.Brands.Include(brand => brand.Products);
 
         public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
         {
-            throw new NotImplementedException();
+            IQueryable<Product> query = _db.Products;
+
+            if (Filter?.BrandId != null)
+                query = query.Where(product => product.BrandId == Filter.BrandId);
+
+            if (Filter?.СategoryId != null)
+                query = query.Where(product => product.CategoryId == Filter.СategoryId);
+
+            return query;
         }
 
         public IEnumerable<Category> GetСategories() => _db.Categories.Include(category => category.Products);
