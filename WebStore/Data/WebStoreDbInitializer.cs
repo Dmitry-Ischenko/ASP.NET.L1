@@ -61,9 +61,9 @@ namespace WebStore.Data
             {
                 _db.Categories.AddRange(TestDB.Сategories);
 
-                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Сategories] ON");
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Categories] ON");
                 _db.SaveChanges();
-                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Сategories] OFF");
+                _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Categories] OFF");
 
                 _db.Database.CommitTransaction();
             }
