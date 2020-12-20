@@ -20,10 +20,6 @@ namespace WebStore.Controllers
         }
         public IActionResult Index()
         {
-            return View();
-        }
-        public IActionResult Employees()
-        {
             return View(_db.Get());
         }
         public IActionResult Details(int id)
@@ -43,7 +39,7 @@ namespace WebStore.Controllers
         public IActionResult DeleteEmployee(int id)
         {
             if (_db.Delete(id)) 
-                return RedirectToAction(nameof(Employees));
+                return RedirectToAction(nameof(Index));
             else
                 return NotFound();
         }
@@ -68,7 +64,7 @@ namespace WebStore.Controllers
                 _db.Add(employee);
             else
                 _db.Update(employee);
-            return RedirectToAction(nameof(Employees));
+            return RedirectToAction(nameof(Index));
         }
         #region Получение коллекци из формы
         /// <summary>

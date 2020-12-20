@@ -10,31 +10,11 @@
                 <div class="col d-flex flex-row">
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/images/phone.png" alt=""></div>+38 068 005 3570</div>
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
-                    <div class="top_bar_content ml-auto">
-                        <div class="top_bar_menu">
-                            <ul class="standard_dropdown top_bar_dropdown">
-                                <li>
-                                    <a href="#">English<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="#">Italian</a></li>
-                                        <li><a href="#">Spanish</a></li>
-                                        <li><a href="#">Japanese</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="#">EUR Euro</a></li>
-                                        <li><a href="#">GBP British Pound</a></li>
-                                        <li><a href="#">JPY Japanese Yen</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="top_bar_content ml-auto">                        
                         <div class="top_bar_user">
                             <div class="user_icon"><img src="~/images/user.svg" alt=""></div>
-                            <div><a href="#">Register</a></div>
-                            <div><a href="#">Sign in</a></div>
+                            <div><a href="#">Регистрация</a></div>
+                            <div><a href="#">Войти</a></div>
                         </div>
                     </div>
                 </div>
@@ -89,7 +69,7 @@
                         <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                             <div class="wishlist_icon"><img src="~/images/heart.png" alt=""></div>
                             <div class="wishlist_content">
-                                <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                                <div class="wishlist_text"><a href="#">Список желаний</a></div>
                                 <div class="wishlist_count">115</div>
                             </div>
                         </div>
@@ -102,7 +82,7 @@
                                     <div class="cart_count"><span>10</span></div>
                                 </div>
                                 <div class="cart_content">
-                                    <div class="cart_text"><a href="#">Cart</a></div>
+                                    <div class="cart_text"><a href="#">Корзина</a></div>
                                     <div class="cart_price">$85</div>
                                 </div>
                             </div>
@@ -123,43 +103,10 @@
                     <div class="main_nav_content d-flex flex-row">
 
                         <!-- Categories Menu -->
+                        @*@Component.InvokeAsync("Categories")*@
+                        <vc:Categories />
 
-                        <div class="cat_menu_container">
-                            <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-                                <div class="cat_burger"><span></span><span></span><span></span></div>
-                                <div class="cat_menu_text">categories</div>
-                            </div>
-
-                            <ul class="cat_menu">
-                                <li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-                                <li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
-                                <li class="hassubs">
-                                    <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-                                    <ul>
-                                        <li class="hassubs">
-                                            <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                            <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <partial name="Partial/_Main_Nav_Menu"/>
+                        <partial name="Partial/_Main_Nav_Menu" />
 
                         <!-- Menu Trigger -->
 

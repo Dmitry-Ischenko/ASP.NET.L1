@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CategoriesViewModel>
+    
+<!-- Categories Menu -->
+<div class="cat_menu_container">
+    <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
+        <div class="cat_burger"><span></span><span></span><span></span></div>
+        <div class="cat_menu_text">Категории</div>
+    </div>
+
+    <ul class="cat_menu">
+        @foreach (var item in Model)
+        {
+            if (item.CildCategory.Count > 0)
+            {
+                <li class="hassubs">
+                    <a href="#">@item.Name<i class="fas fa-chevron-right"></i></a>
+                    <ul>
+                        @foreach (var ChildCategory in item.CildCategory)
+                        {
+                            <li><a asp-controller="Shop" asp-action="Index" asp-route-CategoryId="@ChildCategory.Id">@ChildCategory.Name<i class="fas fa-chevron-right"></i></a></li>
+                        }
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li><a asp-controller="Shop" asp-action="Index" asp-route-CategoryId="@item.Id">@item.Name<i class="fas fa-chevron-right ml-auto"></i></a></li>
+            }
+        }
+    </ul>
+</div>

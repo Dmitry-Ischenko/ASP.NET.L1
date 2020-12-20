@@ -1,45 +1,30 @@
-﻿@{
-    Layout = null;
+﻿@model EmployeesViewModel
+
+@section Styles {
+    <partial name="Partial/_Index_Styles" />
 }
-@model EmployeesViewModel
+@section Scripts {
+    <partial name="Partial/_Index_Scripts" />
+}
+<!-- Single Blog Post -->
 
-<!DOCTYPE html>
+<div class="single_post">
+    <div class="container">
+        <div class="row">
 
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" />
-    <title>index</title>
-</head>
-<body>
-    <div>
-        <ul>
-            <li><a asp-action="Index">Главная</a></li>
-            <li><a asp-action="Employees">Сотрудники</a></li>
-        </ul>
-        <hr />
+            <form method="post" id="save" asp-action="SaveChangeEmployee" class="form-group">
+                ID: <input type="number" value="@Model.Id" readonly="readonly" name="id"><br>
+                Имя: <input type="text" value="@Model.FirstName" name="FirstName"><br>
+                Фамилия: <input type="text" value="@Model.LastName" name="LastName"><br>
+                Возраст: <input type="number" value="@Model.Age" name="Age"><br>
+                <input type="submit" value="Сохранить" class="btn btn-primary"/>  <button type="submit" form="del" class="btn btn-primary">Удалить</button>
+            </form>
+            <form asp-action="DeleteEmployee" method="post" id="del">
+                <input type="number" value="@Model.Id" readonly="readonly" name="id" hidden="hidden">
+            </form>
+        </div>
     </div>
-    <div>
-        @* Оставлю здесь, вариант нарушающий подход CRUD-интерфейса *@
-        <!--<form method="post" asp-action="SaveOrDelete">
-            ID: <input type="number" value="@Model.Id" readonly="readonly" name="id"><br>
-            Имя: <input type="text" value="@Model.FirstName" name="FirstName"><br>
-            Фамилия: <input type="text" value="@Model.LastName" name="LastName"><br>
-            Возраст: <input type="number" value="@Model.Age" name="Age"><br>
-            <input type="submit" value="Сохранить" name="save" /><input type="submit" value="Удалить" name="del" />
-        </form>
-        <hr />-->
-        <form method="post" id="save" asp-action="SaveChangeEmployee">
-            ID: <input type="number" value="@Model.Id" readonly="readonly" name="id"><br>
-            Имя: <input type="text" value="@Model.FirstName" name="FirstName"><br>
-            Фамилия: <input type="text" value="@Model.LastName" name="LastName"><br>
-            Возраст: <input type="number" value="@Model.Age" name="Age"><br>
-            <input type="submit" value="Сохранить" /><button type="submit" form="del">Удалить</button>
-        </form>
-        <form asp-action="DeleteEmployee" method="post" id="del">
-            <input type="number" value="@Model.Id" readonly="readonly" name="id" hidden="hidden">
-        </form>
-    </div>
-    <div><hr /><p><h3>&copy;@DateTime.Now.Year</h3></p></div>
-</body>
-</html>
+</div>
+
+
+
