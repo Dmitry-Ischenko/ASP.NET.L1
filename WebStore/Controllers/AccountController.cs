@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using WebStore.Domain.Entities.Identity;
 using WebStore.ViewModels;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebStore.Controllers
 {
+    [Autorize]
     public class AccountController: Controller
     {
         private readonly UserManager<User> _UserManager;
@@ -18,9 +20,10 @@ namespace WebStore.Controllers
         }
 
         #region Регистрация
+        [AllowAnonymous]
         public IActionResult Register() => View(new RegisterUserViewModel());
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken,AllowAnonymous]
         public async Task<IActionResult> Register(RegisterUserViewModel Model)
         {
             if (!ModelState.IsValid)
@@ -48,10 +51,10 @@ namespace WebStore.Controllers
             return View(Model);
         }
         #endregion
-
+        [AllowAnonymous]
         public IActionResult Login(string ReturnUrl) => View(new LoginViewModel { ReturnUrl = ReturnUrl });
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken,AllowAnonymous]
 
         public async Task<IActionResult> Login(LoginViewModel Model)
         {
@@ -84,6 +87,7 @@ namespace WebStore.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [AllowAnonymous]
         public IActionResult AccessDenied() => View();
     }
 }
