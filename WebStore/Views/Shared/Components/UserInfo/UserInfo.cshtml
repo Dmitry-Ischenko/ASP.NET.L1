@@ -1,2 +1,7 @@
-﻿<div><a href="#">@User.Identity!.Name</a></div>
+﻿@using WebStore.Domain.Entities.Identity
+<div><a href="#">@User.Identity!.Name</a></div>
+@if (User.IsInRole(Role.Administrator))
+{
+    <div><a href="#">Админка </a></div>
+}
 <div><a asp-controller="Account" asp-action="Logout">Выйти</a></div>

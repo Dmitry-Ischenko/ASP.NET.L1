@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <h2>Добро пожаловать!</h2>
-                <form asp-action="Login" asp-antiforgery="true">
+                <form asp-action="Login" asp-antiforgery="true" asp-route-ReturnUrl="@Model.ReturnUrl">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <input asp-for="UserName" placeholder="Имя пользователя" />
