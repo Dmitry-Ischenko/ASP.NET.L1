@@ -23,5 +23,7 @@ namespace WebStore.Infrastructure.Mapping
                      Order = p.Order,
                       Price = p.Price
         };
+
+        public static IEnumerable<ProductViewModel> ToView(this IEnumerable<Product> p) => p.Select(ToView);
     }
 }

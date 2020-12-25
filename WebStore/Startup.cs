@@ -17,6 +17,7 @@ using WebStore.Service;
 using WebStore.Infrastructure.Services.InSql;
 using WebStore.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
+using WebStore.Infrastructure.Services.InCookies;
 
 namespace WebStore
 {
@@ -73,6 +74,8 @@ namespace WebStore
             services.AddTransient<IProductData, InSqIProductData>();
             //InMemoryBlogsData: IBlogsData
             services.AddSingleton<IBlogsData, InMemoryBlogsData>();
+            services.AddScoped<ICartService, InCookiesCartService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
