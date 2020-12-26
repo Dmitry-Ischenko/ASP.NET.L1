@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebStore.Domain.Entities.Identity;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Models;
 using WebStore.Service;
@@ -13,7 +11,6 @@ using WebStore.ViewModels;
 
 namespace WebStore.Controllers
 {
-    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly IEmployeesData _db;
@@ -39,7 +36,6 @@ namespace WebStore.Controllers
                 return NotFound();
         }
         [HttpPost]
-        [Authorize(Roles = Role.Administrator)]
         public IActionResult DeleteEmployee(int id)
         {
             if (_db.Delete(id)) 
@@ -52,7 +48,6 @@ namespace WebStore.Controllers
             return View("Details", new EmployeesViewModel());
         }
         [HttpPost]
-        [Authorize(Roles = Role.Administrator)]
         public IActionResult SaveChangeEmployee(EmployeesViewModel Model)
         {
             if (Model is null)
@@ -70,6 +65,48 @@ namespace WebStore.Controllers
             else
                 _db.Update(employee);
             return RedirectToAction(nameof(Index));
-        }        
+        }
+        #region Получение коллекци из формы
+        /// <summary>
+        /// Оставлю здесь, вариант нарушающий подход CRUD-интерфейса
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        //[HttpPost]
+        //public IActionResult SaveOrDelete(IFormCollection form)
+        //{
+        //    if (form.TryGetValue("id",out var idStr))
+        //    {
+        //        if (Int32.TryParse(idStr,out int id))
+        //        {
+        //            var employee = _db.Employees.FirstOrDefault(item => item.Id == id);
+        //            if (employee is not null)
+        //            {
+        //                if (form.ContainsKey("save"))
+        //                {
+        //                    form.TryGetValue("FirstName", out var FirstName);
+        //                    form.TryGetValue("LastName", out var LastName);
+        //                    form.TryGetValue("Age", out var AgeStr);
+        //                    Int32.TryParse(AgeStr, out var Age);
+        //                    if (!employee.FirstName.Equals(FirstName))
+        //                        employee.FirstName = FirstName;
+        //                    if (!employee.LastName.Equals(FirstName))
+        //                        employee.LastName = LastName;
+        //                    if (employee.Age != Age)
+        //                        employee.Age = Age;
+        //                    return RedirectToAction(nameof(Employees));
+        //                }
+        //                if (form.ContainsKey("del"))
+        //                {
+        //                    _db.Employees.Remove(employee);
+        //                    return RedirectToAction(nameof(Employees));
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return NotFound();
+        //} 
+        #endregion
     }
 }
