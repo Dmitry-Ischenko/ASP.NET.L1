@@ -18,6 +18,7 @@ using WebStore.Infrastructure.Services.InSql;
 using WebStore.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using WebStore.Infrastructure.Services.InCookies;
+using WebStore.Infrastructure.Services.InSQL;
 
 namespace WebStore
 {
@@ -75,6 +76,7 @@ namespace WebStore
             //InMemoryBlogsData: IBlogsData
             services.AddSingleton<IBlogsData, InMemoryBlogsData>();
             services.AddScoped<ICartService, InCookiesCartService>();
+            services.AddScoped<IOrderService, SqlOrderService>();
 
         }
 
