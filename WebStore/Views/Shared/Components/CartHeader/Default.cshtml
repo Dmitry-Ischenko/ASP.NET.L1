@@ -1,0 +1,13 @@
+﻿@model CartViewModel
+<div class="cart">
+    <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+        <div class="cart_icon">
+            <img src="~/images/cart.png" alt="">
+            <div class="cart_count"><span>@Model.ItemsCount</span></div>
+        </div>
+        <div class="cart_content">
+            <div class="cart_text"><a asp-controller="Cart" asp-action="Index">Корзина</a></div>
+            <div class="cart_price">@Model.TotalPrice</div>
+        </div>
+    </div>
+</div>

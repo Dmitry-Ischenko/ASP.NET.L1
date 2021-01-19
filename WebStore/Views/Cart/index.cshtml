@@ -12,48 +12,61 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
-                    <div class="cart_title">Shopping Cart</div>
-                    <div class="cart_items">
-                        <ul class="cart_list">
-                            @foreach (var (product, quantity) in Model.Items)
-                            {
-                                <li class="cart_item clearfix">
-                                    <div class="cart_item_image"><img src="~/images/Products/@product.ImageUrl" alt=""></div>
-                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                        <div class="cart_item_name cart_info_col">
-                                            <div class="cart_item_title">Название</div>
-                                            <div class="cart_item_text">@product.Name</div>
-                                        </div>
-                                        <div class="cart_item_quantity cart_info_col">
-                                            <div class="cart_item_title">Количество</div>
-                                            <div class="cart_item_text"><a asp-controller="Cart" asp-action="RemoveFromCart" asp-route-id="@product.Id">-</a> @quantity <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@product.Id">+</a></div>
-                                        </div>
-                                        <div class="cart_item_price cart_info_col">
-                                            <div class="cart_item_title">Стоимость</div>
-                                            <div class="cart_item_text">@product.Price.ToString("C")</div>
-                                        </div>
-                                        <div class="cart_item_total cart_info_col">
-                                            <div class="cart_item_title">Цена</div>
-                                            <div class="cart_item_text">@((product.Price * quantity).ToString("C"))</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            }
-                        </ul>
-                    </div>
 
-                    <!-- Order Total -->
-                    <div class="order_total">
-                        <div class="order_total_content text-md-right">
-                            <div class="order_total_title">Цена заказа:</div>
-                            <div class="order_total_amount">@Model.TotalPrice.ToString("C")</div>
+                    @if (Model.ItemsCount > 0)
+                    {
+                        <div class="cart_title">Shopping Cart</div>
+                        <div class="cart_items">
+                            <ul class="cart_list">
+                                @foreach (var (product, quantity) in Model.Items)
+                                {
+                                    <li class="cart_item clearfix">
+                                        <div class="cart_item_image"><img src="~/images/Products/@product.ImageUrl" alt=""></div>
+                                        <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                            <div class="cart_item_name cart_info_col">
+                                                <div class="cart_item_title">Название</div>
+                                                <div class="cart_item_text">@product.Name</div>
+                                            </div>
+                                            <div class="cart_item_quantity cart_info_col">
+                                                <div class="cart_item_title">Количество</div>
+                                                <div class="cart_item_text">
+                                                <a asp-controller="Cart" asp-action="DecrementFromCart" asp-route-id="@product.Id">-</a>
+                                                @quantity
+                                                <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@product.Id">+</a>
+                                                </div>
+                                            </div>
+                                            <div class="cart_item_price cart_info_col">
+                                                <div class="cart_item_title">Стоимость</div>
+                                                <div class="cart_item_text">@product.Price.ToString("C")</div>
+                                            </div>
+                                            <div class="cart_item_total cart_info_col">
+                                                <div class="cart_item_title">Цена</div>
+                                                <div class="cart_item_text">@((product.Price * quantity).ToString("C"))</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
                         </div>
-                    </div>
 
-                    <div class="cart_buttons">
-                        <a class="button cart_button_clear" asp-controller="Cart" asp-action="Clear">Очистить корзину</a>
-                        <a class="button cart_button_checkout" >Оформить заказ</a>
-                    </div>
+                        <!-- Order Total -->
+                        <div class="order_total">
+                            <div class="order_total_content text-md-right">
+                                <div class="order_total_title">Цена заказа:</div>
+                                <div class="order_total_amount">@Model.TotalPrice.ToString("C")</div>
+                            </div>
+                        </div>
+
+                        <div class="cart_buttons">
+                            <a class="button cart_button_clear" asp-controller="Cart" asp-action="Clear">Очистить корзину</a>
+                            <a class="button cart_button_checkout">Оформить заказ</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="cart_title">Корзина пуста</div>
+                    }
+
                 </div>
             </div>
         </div>
