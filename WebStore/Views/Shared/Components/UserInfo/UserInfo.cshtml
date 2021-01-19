@@ -2,6 +2,6 @@
 <div><a href="#">@User.Identity!.Name</a></div>
 @if (User.IsInRole(Role.Administrator))
 {
-    <div><a href="#">Админка </a></div>
+    <div><a asp-action="Index" asp-controller="Home" asp-area="Admin">Админка </a></div>
 }
 <div><a asp-controller="Account" asp-action="Logout">Выйти</a></div>
