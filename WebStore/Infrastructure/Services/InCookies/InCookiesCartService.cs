@@ -51,10 +51,9 @@ namespace WebStore.Infrastructure.Services.InCookies
             _ProductData = ProductData;
             _HttpContextAccessor = HttpContextAccessor;
 
-            var user = HttpContextAccessor.HttpContext!.User;
-            var user_name = user.Identity!.IsAuthenticated ? $"-{user.Identity.Name}" : null;
+            var user = HttpContextAccessor.HttpContext!.User;            
 
-            _CartName = $"WebStore.Cart{user_name}";
+            _CartName = "WebStore.Cart";
         }
 
         public void AddToCart(int id)
