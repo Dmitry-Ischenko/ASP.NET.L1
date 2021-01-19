@@ -50,15 +50,30 @@
                         @foreach (var item in Model.Products)
                         {
                             <!-- Product Item -->
-                            <div class="product_item is_new">
-                                <div class="product_border"></div>
-                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="~/images/Products/@item.ImageUrl" alt=""></div>
-                                <div class="product_content">
-                                    <div class="product_price">@item.Price &#8381;</div>
-                                    <div class="product_name"><div><a asp-controller="Shop" asp-action="Product" asp-route-Id="@item.Id" tabindex="0">@item.Name</a></div></div>
+                    <div class="product_item is_new">
+
+                        <div class="product_border"></div>
+                        <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="~/images/Products/@item.ImageUrl" alt=""></div>
+                        <div class="product_content">
+                            <div class="product_price">@item.Price &#8381;</div>
+                            <div class="product_name">
+                                <div>
+                                    <a asp-controller="Shop" asp-action="Product" asp-route-Id="@item.Id" title="@item.Name">
+                                        @if (item.Name.Length >= 15)
+                                        {
+                                           @($"{@item.Name.Substring(0, 15)}...")
+                                        }
+                                        else
+                                        {
+                                            @item.Name
+                                        }
+                                    </a>
                                 </div>
-                                <div class="product_fav"><i class="fas fa-heart"></i></div>
                             </div>
+                        </div>
+                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                        
+                    </div>
                         }
                     </div>
 

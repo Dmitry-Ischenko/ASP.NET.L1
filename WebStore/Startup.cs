@@ -18,6 +18,7 @@ using WebStore.Infrastructure.Services.InSql;
 using WebStore.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using WebStore.Infrastructure.Services.InCookies;
+using WebStore.Infrastructure.Services.InSQL;
 
 namespace WebStore
 {
@@ -75,6 +76,7 @@ namespace WebStore
             //InMemoryBlogsData: IBlogsData
             services.AddSingleton<IBlogsData, InMemoryBlogsData>();
             services.AddScoped<ICartService, InCookiesCartService>();
+            services.AddScoped<IOrderService, SqlOrderService>();
 
         }
 
@@ -97,6 +99,10 @@ namespace WebStore
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
                 endpoints.MapControllerRoute(
                     name:"default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

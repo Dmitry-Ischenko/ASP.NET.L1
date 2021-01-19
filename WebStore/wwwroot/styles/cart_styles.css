@@ -1239,7 +1239,7 @@ select option
 }
 .cart_item_image
 {
-	width: 133px;
+	width: 60px;
 	height: 133px;
 	float: left;
 }
@@ -1249,13 +1249,14 @@ select option
 }
 .cart_item_info
 {
-	width: calc(100% - 133px);
+	width: calc(100% - 60px);
 	float: left;
 	padding-top: 18px;
 }
 .cart_item_name
 {
-	margin-left: 7.53%;
+	margin-left: 2%;
+	width: 300px;
 }
 .cart_item_title
 {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Webstore.DAL.Context;
 
 namespace Webstore.DAL.Migrations
 {
     [DbContext(typeof(WebStoreDB))]
-    partial class WebStoreDBModelSnapshot : ModelSnapshot
+    [Migration("20210119091112_Order")]
+    partial class Order
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
