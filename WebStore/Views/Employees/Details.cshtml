@@ -1,0 +1,30 @@
+﻿@model EmployeesViewModel
+
+@section Styles {
+    <partial name="Partial/_Index_Styles" />
+}
+@section Scripts {
+    <partial name="Partial/_Index_Scripts" />
+}
+<!-- Single Blog Post -->
+
+<div class="single_post">
+    <div class="container">
+        <div class="row">
+
+            <form method="post" id="save" asp-action="SaveChangeEmployee" class="form-group">
+                ID: <input type="number" value="@Model.Id" readonly="readonly" name="id"><br>
+                Имя: <input type="text" value="@Model.FirstName" name="FirstName"><br>
+                Фамилия: <input type="text" value="@Model.LastName" name="LastName"><br>
+                Возраст: <input type="number" value="@Model.Age" name="Age"><br>
+                <input type="submit" value="Сохранить" class="btn btn-primary"/>  <button type="submit" form="del" class="btn btn-primary">Удалить</button>
+            </form>
+            <form asp-action="DeleteEmployee" method="post" id="del">
+                <input type="number" value="@Model.Id" readonly="readonly" name="id" hidden="hidden">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

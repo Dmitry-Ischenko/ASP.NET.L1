@@ -1,0 +1,41 @@
+﻿@section Styles {
+    <partial name="Partial/_Blog_Styles" />
+}
+@section Scripts {
+    <partial name="Partial/_Blog_Scripts" />
+}
+@model BlogsViewModel
+<!-- Home -->
+
+<div class="home">
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="http://localhost:5000/images/shop_background.jpg"></div>
+    <div class="home_overlay"></div>
+    <div class="home_content d-flex flex-column align-items-center justify-content-center">
+        <h2 class="home_title">Technological Blog</h2>
+    </div>
+</div>
+
+<!-- Blog -->
+
+<div class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="blog_posts d-flex flex-row align-items-start justify-content-between">
+                    <!-- Blog post -->
+                    @foreach (var item in Model.Blogs)
+                    {
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image:url(@item.PreviewImage)"></div>
+                            <div class="blog_text">@item.Header</div>
+                            <div class="blog_button"><a asp-action="BlogPost" asp-route-id="@item.Id">Continue Reading</a></div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

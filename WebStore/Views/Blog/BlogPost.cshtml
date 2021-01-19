@@ -1,0 +1,50 @@
+﻿@section Styles {
+    <partial name="Partial/_BlogPost_Styles" />
+}
+@section Scripts {
+    <partial name="Partial/_BlogPost_Scripts" />
+}
+@model  BlogSingelPostViewModel
+
+<!-- Home -->
+
+<div class="home">
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="@Model.Blog.ImageBackground" data-speed="0.8"></div>
+</div>
+
+<!-- Single Blog Post -->
+
+<div class="single_post">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="single_post_title">@Model.Blog.Header</div>
+                <div class="single_post_text">
+                    @Html.Raw(Model.Blog.BodyHtml)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Blog Posts -->
+
+<div class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="blog_posts d-flex flex-row align-items-start justify-content-between">
+
+                    @foreach (var item in Model.Blogs)
+                    {
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image:url(@item.PreviewImage)"></div>
+                            <div class="blog_text">@item.Header</div>
+                            <div class="blog_button"><a asp-action="BlogPost" asp-route-id="@item.Id">Continue Reading</a></div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
