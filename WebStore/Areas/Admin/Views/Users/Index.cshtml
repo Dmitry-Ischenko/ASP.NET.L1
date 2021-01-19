@@ -1,7 +1,40 @@
-﻿
+﻿@model IEnumerable<User>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>@Html.DisplayNameFor(user => user.Id)</th>
+            <th>@Html.DisplayNameFor(user => user.UserName)</th>
+            <th>@Html.DisplayNameFor(user => user.Email)</th>            
+            <th>@Html.DisplayNameFor(user => user.Description)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@user.Id">
+                        <i class="glyphicon glyphicon-edit"></i>ред.
+                    </a>
+                </td>
+                <td>@Html.DisplayFor(m => user.Id)</td>
+                <td>@Html.DisplayFor(m => user.UserName)</td>
+                <td>@Html.DisplayFor(m => user.Email)</td>                
+                <td>@Html.DisplayFor(m => user.Description)</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@user.Id" class="text-danger">
+                        <i class="glyphicon glyphicon-remove"></i>удал.
+                    </a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
 

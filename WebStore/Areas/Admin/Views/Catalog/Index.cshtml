@@ -27,7 +27,7 @@
                 <td>@Html.DisplayFor(m => product.Name)</td>
                 <td>@Html.DisplayFor(m => product.Brand.Name)</td>
                 <td>@Html.DisplayFor(m => product.Category.Name)</td>
-                <td><img src="~/images/shop/@product.ImageUrl" width="50" alt="@product.Name" /></td>
+                <td><img src="~/images/Products/@product.ImageUrl" width="50" alt="@product.Name" /></td>
                 <td>@Html.DisplayFor(m => product.Price)</td>
                 <td>
                     <a asp-action="Delete" asp-route-id="@product.Id" class="text-danger">
