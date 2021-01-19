@@ -9,7 +9,5 @@ namespace WebStore.Domain
         public int? СategoryId { get; set; }
 
         public int? BrandId { get; set; }
-
-        public int[] Ids { get; set; }
     }
 }

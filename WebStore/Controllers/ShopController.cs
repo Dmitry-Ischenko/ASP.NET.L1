@@ -6,7 +6,6 @@ using WebStore.Domain;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.ViewModels;
 using WebStore.Domain.Entities;
-using WebStore.Infrastructure.Mapping;
 
 namespace WebStore.Controllers
 {
@@ -72,10 +71,23 @@ namespace WebStore.Controllers
         }
         public IActionResult Product(int id)
         {
-            var product = _ProductData.GetProductById(id);
+            var product = _ProductData.GetProducts().FirstOrDefault(item => item.Id == id);
             if (product is null)
                 return NotFound();
-            return View(product.ToView());
+            var category = _ProductData.GetСategories()
+                .FirstOrDefault(item => item.Id == product.CategoryId);
+            var brand = _ProductData.GetBrands()
+                .FirstOrDefault(item => item.Id == product.BrandId);
+            return View(new ProductViewModel { 
+             Brand = brand,
+             Category = category,
+             Name = product.Name,
+             Price = product.Price,
+             Description = product.Description,
+             ImageUrl = product.ImageUrl,
+             Id = product.Id,
+
+            });
         }
     }
 }

@@ -9,7 +9,6 @@ using WebStore.Service;
 
 namespace WebStore.Infrastructure.Services
 {
-    [Obsolete("Класс устарел и не реализует необходимые методы")]
     public class InMemoryProductsData : IProductData
     {
         public IEnumerable<Brand> GetBrands() => TestDB.Brands;
@@ -25,11 +24,6 @@ namespace WebStore.Infrastructure.Services
             if(Filter?.BrandId is { } brand_id)
                 query = query.Where(product => product.BrandId == brand_id).ToList();
             return query;
-        }
-
-        public Product GetProductById(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }
