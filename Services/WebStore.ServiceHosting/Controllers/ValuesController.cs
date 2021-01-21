@@ -1,47 +1,66 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebStore.ServiceHosting.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] // http://localhost:5001/api/values
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET: api/<ValuesController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private static readonly List<string> __Values = Enumerable
+           .Range(1, 10)
+           .Select(i => $"Value{i:00}")
+           .ToList();
+
+        [HttpGet] // http://localhost:5001/api/values
+        public IEnumerable<string> Get() => __Values;
+
+        [HttpGet("{id}")] // http://localhost:5001/api/values/5
+        public ActionResult<string> Get(int id)
         {
-            return new string[] { "value1", "value2" };
+            if (id < 0)
+                return BadRequest();
+            if (id >= __Values.Count)
+                return NotFound();
+
+            return __Values[id];
         }
 
-        // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("add")] //http://localhost:5001/api/values/add
+        public ActionResult Post([FromBody] string value)
         {
+            __Values.Add(value);
+            return Ok();
         }
 
-        // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("edit/{id}")] //http://localhost:5001/api/values/edit/5
+        public ActionResult Put(int id, [FromBody] string value)
         {
+            if (id < 0)
+                return BadRequest();
+            if (id >= __Values.Count)
+                return NotFound();
+
+            __Values[id] = value;
+
+            return Ok();
         }
 
-        // DELETE api/<ValuesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            if (id < 0)
+                return BadRequest();
+            if (id >= __Values.Count)
+                return NotFound();
+
+            __Values.RemoveAt(id);
+
+            return Ok();
         }
     }
 }
