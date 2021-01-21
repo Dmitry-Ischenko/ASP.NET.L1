@@ -8,9 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Webstore.DAL.Context;
 using WebStore.Domain.Entities.Identity;
-using WebStore.Service;
+using Webstore.Services.Products;
 
-namespace WebStore.Data
+namespace Webstore.Services.Data
 {
     public class WebStoreDbInitializer
     {
@@ -39,7 +39,8 @@ namespace WebStore.Data
                 _Logger.LogInformation("Есть не примененные миграции...");
                 db.Migrate();
                 _Logger.LogInformation("Миграции выполнены успешно");
-            } else
+            }
+            else
                 _Logger.LogInformation("Структура БД в актуальном состояние");
 
             try
@@ -73,7 +74,7 @@ namespace WebStore.Data
             }
 
             _Logger.LogInformation("Добавление категорий... {0} мс", timer.ElapsedMilliseconds);
-            using(_db.Database.BeginTransaction())
+            using (_db.Database.BeginTransaction())
             {
                 _db.Categories.AddRange(TestDB.Сategories);
 
@@ -84,7 +85,7 @@ namespace WebStore.Data
                 _db.Database.CommitTransaction();
             }
             _Logger.LogInformation("Добавление брендов ...");
-            using(_db.Database.BeginTransaction())
+            using (_db.Database.BeginTransaction())
             {
                 _db.Brands.AddRange(TestDB.Brands);
                 _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[Brands] ON");

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Webstore.DAL.Context;
+using Webstore.Interfaces.Services;
 using WebStore.Domain.Entities.Identity;
 using WebStore.Domain.Entities.Orders;
 using WebStore.Domain.ViewModels;
-using WebStore.Infrastructure.Interfaces;
 
-namespace WebStore.Infrastructure.Services.InSQL
+namespace Webstore.Services.Products.InSql
 {
     public class SqlOrderService : IOrderService
     {
@@ -59,7 +59,7 @@ namespace WebStore.Infrastructure.Services.InSQL
 
             var items =
                 from cart_item in Cart.Items
-                join product in cart_products 
+                join product in cart_products
                     on cart_item.Product.Id equals product.Id
                 select new OrderItem
                 {

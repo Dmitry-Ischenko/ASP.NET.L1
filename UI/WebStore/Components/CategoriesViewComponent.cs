@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebStore.Infrastructure.Interfaces;
 using WebStore.Domain.ViewModels;
+using Webstore.Interfaces.Services;
 
 namespace WebStore.Components
 {

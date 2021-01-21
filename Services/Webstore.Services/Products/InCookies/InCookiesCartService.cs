@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
 using Newtonsoft.Json;
+using Webstore.Interfaces.Services;
+using Webstore.Services.Mapping;
 using WebStore.Domain;
 using WebStore.Domain.Entities;
 using WebStore.Domain.ViewModels;
-using WebStore.Infrastructure.Interfaces;
-using WebStore.Infrastructure.Mapping;
 
-namespace WebStore.Infrastructure.Services.InCookies
+namespace Webstore.Services.Products.InCookies
 {
     public class InCookiesCartService : ICartService
     {
@@ -51,7 +51,7 @@ namespace WebStore.Infrastructure.Services.InCookies
             _ProductData = ProductData;
             _HttpContextAccessor = HttpContextAccessor;
 
-            var user = HttpContextAccessor.HttpContext!.User;            
+            var user = HttpContextAccessor.HttpContext!.User;
 
             _CartName = "WebStore.Cart";
         }
@@ -62,7 +62,7 @@ namespace WebStore.Infrastructure.Services.InCookies
             var item = cart.Items.FirstOrDefault(i => i.ProductId == id);
 
             if (item is null)
-                cart.Items.Add(new CartItem {ProductId = id, Quantity = 1});
+                cart.Items.Add(new CartItem { ProductId = id, Quantity = 1 });
             else
                 item.Quantity++;
 
@@ -74,7 +74,7 @@ namespace WebStore.Infrastructure.Services.InCookies
             var cart = Cart;
             var item = cart.Items.FirstOrDefault(i => i.ProductId == id);
 
-            if(item is null) return;
+            if (item is null) return;
 
             if (item.Quantity > 0)
                 item.Quantity--;

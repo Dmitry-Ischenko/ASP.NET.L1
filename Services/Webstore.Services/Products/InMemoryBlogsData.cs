@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Webstore.Interfaces.Services;
 using WebStore.Domain.Models;
-using WebStore.Infrastructure.Interfaces;
-using WebStore.Service;
+using Webstore.Services.Data;
 
-namespace WebStore.Infrastructure.Services
+namespace Webstore.Services.Products
 {
-    public class InMemoryBlogsData: IBlogsData
+    public class InMemoryBlogsData : IBlogsData
     {
         private IEnumerable<BlogPost> _Blogs = TestDB.Blogs;
 

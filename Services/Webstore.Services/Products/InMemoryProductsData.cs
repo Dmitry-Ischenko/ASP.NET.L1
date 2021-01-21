@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Webstore.Interfaces.Services;
 using WebStore.Domain;
 using WebStore.Domain.Entities;
-using WebStore.Infrastructure.Interfaces;
-using WebStore.Service;
+using Webstore.Services.Data;
 
-namespace WebStore.Infrastructure.Services
+namespace Webstore.Services.Products
 {
     [Obsolete("Класс устарел и не реализует необходимые методы")]
     public class InMemoryProductsData : IProductData
@@ -21,8 +21,8 @@ namespace WebStore.Infrastructure.Services
             var query = TestDB.Products;
 
             if (Filter?.СategoryId is { } category_id)
-                query = query.Where(product => product.CategoryId == category_id).ToList();  
-            if(Filter?.BrandId is { } brand_id)
+                query = query.Where(product => product.CategoryId == category_id).ToList();
+            if (Filter?.BrandId is { } brand_id)
                 query = query.Where(product => product.BrandId == brand_id).ToList();
             return query;
         }
