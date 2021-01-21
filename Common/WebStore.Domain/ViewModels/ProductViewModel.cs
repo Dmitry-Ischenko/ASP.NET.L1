@@ -1,9 +1,9 @@
 ﻿using WebStore.Domain.Entities;
 
-namespace WebStore.ViewModels
+namespace WebStore.Domain.ViewModels
 {
-    public class ProductViewModel: Product
+    public class ProductViewModel : Product
     {
-        
+
     }
 }

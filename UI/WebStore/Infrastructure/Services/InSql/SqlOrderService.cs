@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Webstore.DAL.Context;
 using WebStore.Domain.Entities.Identity;
 using WebStore.Domain.Entities.Orders;
+using WebStore.Domain.ViewModels;
 using WebStore.Infrastructure.Interfaces;
-using WebStore.ViewModels;
 
 namespace WebStore.Infrastructure.Services.InSQL
 {

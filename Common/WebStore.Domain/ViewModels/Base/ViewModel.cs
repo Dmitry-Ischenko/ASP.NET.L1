@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebStore.ViewModels.Base
+namespace WebStore.Domain.ViewModels.Base
 {
     public class ViewModel
     {

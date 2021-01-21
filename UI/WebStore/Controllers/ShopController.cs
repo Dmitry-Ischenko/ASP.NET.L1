@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using WebStore.Domain;
 using WebStore.Infrastructure.Interfaces;
-using WebStore.ViewModels;
+using WebStore.Domain.ViewModels;
 using WebStore.Domain.Entities;
 using WebStore.Infrastructure.Mapping;
+using WebStore.Domain.ViewModels;
 
 namespace WebStore.Controllers
 {

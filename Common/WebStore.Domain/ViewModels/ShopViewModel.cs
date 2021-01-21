@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebStore.Domain.Entities;
-using WebStore.ViewModels.Base;
+using WebStore.Domain.ViewModels.Base;
 
-namespace WebStore.ViewModels
+namespace WebStore.Domain.ViewModels
 {
-    public class ShopViewModel: ViewModel
+    public class ShopViewModel : ViewModel
     {
         public IEnumerable<Product> Products { get; set; }
 

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebStore.Models;
-using WebStore.ViewModels.Base;
+using WebStore.Domain.Models;
+using WebStore.Domain.ViewModels.Base;
 
-namespace WebStore.ViewModels
+namespace WebStore.Domain.ViewModels
 {
-    public class BlogSingelPostViewModel: BlogsViewModel
+    public class BlogSingelPostViewModel : BlogsViewModel
     {
         /// <summary>
         /// Блог
         /// </summary>
-        public BlogPost Blog { get; set; }        
+        public BlogPost Blog { get; set; }
 
     }
 }
