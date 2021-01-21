@@ -17,6 +17,8 @@ using Webstore.Interfaces.Services;
 using Webstore.Services.Data;
 using Webstore.Services.Products.InCookies;
 using Webstore.Services.Products.InSql;
+using WebStore.Client.Values;
+using WebStore.Interfaces.TestAPI;
 
 namespace WebStore
 {
@@ -75,6 +77,7 @@ namespace WebStore
             services.AddSingleton<IBlogsData, InMemoryBlogsData>();
             services.AddScoped<ICartService, InCookiesCartService>();
             services.AddScoped<IOrderService, SqlOrderService>();
+            services.AddScoped<IValuesServices, ValuesClient>();
 
         }
 
