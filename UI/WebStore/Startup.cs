@@ -26,6 +26,7 @@ namespace WebStore
     {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
         private readonly IConfiguration _Configuration;
 
         public Startup(IConfiguration Configuration) => _Configuration = Configuration;
