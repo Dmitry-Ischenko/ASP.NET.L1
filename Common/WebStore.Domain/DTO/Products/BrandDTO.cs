@@ -7,7 +7,7 @@ using WebStore.Domain.Entities.Base;
 
 namespace WebStore.Domain.DTO.Products
 {
-    class BrandDTO: NamedEntity
+    public class BrandDTO: NamedEntity
     {
         public int Order { get; set; }
 

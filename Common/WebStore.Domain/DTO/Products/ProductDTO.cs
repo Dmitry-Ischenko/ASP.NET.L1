@@ -7,7 +7,7 @@ using WebStore.Domain.Entities.Base;
 
 namespace WebStore.Domain.DTO.Products
 {
-    class ProductDTO: NamedEntity
+    public class ProductDTO: NamedEntity
     {
         public int Order { get; set; }
         public decimal Price { get; set; }
