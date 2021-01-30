@@ -10,7 +10,7 @@ using WebStore.Domain.Models;
 
 namespace WebStore.ServiceHosting.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/employees")]
     [ApiController]
     public class EmployeesApiController : ControllerBase, IEmployeesData
     {
