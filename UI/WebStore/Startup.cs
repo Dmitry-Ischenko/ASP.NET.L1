@@ -32,30 +32,30 @@ namespace WebStore
         public Startup(IConfiguration Configuration) => _Configuration = Configuration;
         public void ConfigureServices(IServiceCollection services)
         {
-//            services.AddDbContext<WebStoreDB>(opt => opt.UseSqlServer(_Configuration.GetConnectionString("Default")));
-//            services.AddTransient<WebStoreDbInitializer>();
+            services.AddDbContext<WebStoreDB>(opt => opt.UseSqlServer(_Configuration.GetConnectionString("Default")));
+            services.AddTransient<WebStoreDbInitializer>();
 
-//            services.AddIdentity<User, Role>()
-//               .AddEntityFrameworkStores<WebStoreDB>()
-//               .AddDefaultTokenProviders();
+            services.AddIdentity<User, Role>()
+               .AddEntityFrameworkStores<WebStoreDB>()
+               .AddDefaultTokenProviders();
 
-//            services.Configure<IdentityOptions>(opt =>
-//            {
-//#if DEBUG
-//                opt.Password.RequiredLength = 3;
-//                opt.Password.RequireDigit = false;
-//                opt.Password.RequireLowercase = false;
-//                opt.Password.RequireUppercase = false;
-//                opt.Password.RequireNonAlphanumeric = false;
-//                opt.Password.RequiredUniqueChars = 3;
-//#endif
-//                opt.User.RequireUniqueEmail = false;
-//                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            services.Configure<IdentityOptions>(opt =>
+            {
+#if DEBUG
+                opt.Password.RequiredLength = 3;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredUniqueChars = 3;
+#endif
+                opt.User.RequireUniqueEmail = false;
+                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
-//                opt.Lockout.AllowedForNewUsers = true;
-//                opt.Lockout.MaxFailedAccessAttempts = 10;
-//                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
-//            });
+                opt.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.MaxFailedAccessAttempts = 10;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+            });
 
             services.ConfigureApplicationCookie(opt =>
             {
@@ -71,21 +71,20 @@ namespace WebStore
             });
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            //services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
             //services.AddTransient<IProductData, InMemoryProductsData>();
-            //services.AddTransient<IProductData, InSqIProductData>();
-            //InMemoryBlogsData: IBlogsData
+            services.AddTransient<IProductData, InSqIProductData>();            
             services.AddSingleton<IBlogsData, InMemoryBlogsData>();
-            //services.AddScoped<ICartService, InCookiesCartService>();
-            //services.AddScoped<IOrderService, SqlOrderService>();
+            services.AddScoped<ICartService, InCookiesCartService>();
+            services.AddScoped<IOrderService, SqlOrderService>();
             services.AddScoped<IValuesServices, ValuesClient>();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)/*, WebStoreDbInitializer db)*/
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDbInitializer db)
         {
-            //db.Initialize();
+            db.Initialize();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
