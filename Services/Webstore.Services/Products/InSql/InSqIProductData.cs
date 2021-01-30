@@ -21,6 +21,11 @@ namespace Webstore.Services.Products.InSql
 
         public IEnumerable<Brand> GetBrands() => _db.Brands.Include(brand => brand.Products);
 
+        public Brand GetBrandsById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Product GetProductById(int id)
         {
             return _db.Products.Include(p => p.Brand).Include(p => p.Category).FirstOrDefault(p => p.Id == id);
@@ -47,5 +52,10 @@ namespace Webstore.Services.Products.InSql
         }
 
         public IEnumerable<Category> GetСategories() => _db.Categories.Include(category => category.Products);
+
+        public Category GetСategoriesById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

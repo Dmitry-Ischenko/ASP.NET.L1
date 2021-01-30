@@ -31,5 +31,15 @@ namespace Webstore.Services.Products
         {
             throw new NotImplementedException();
         }
+
+        public Category GetСategoriesById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Brand GetBrandsById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
