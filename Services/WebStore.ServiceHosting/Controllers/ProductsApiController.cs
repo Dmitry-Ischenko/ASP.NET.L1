@@ -36,15 +36,15 @@ namespace WebStore.ServiceHosting.Controllers
             throw new NotImplementedException();
         }
 
-        [HttpGet("products/{id}")]
+        [HttpGet("{id}")]
         public Product GetProductById(int id)
         {
             return _db.GetProductById(id);
         }
 
         
-        [HttpGet("products")]
-        public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
+        [HttpPost]
+        public IEnumerable<Product> GetProducts([FromBody]ProductFilter Filter = null)
         {
             return _db.GetProducts(Filter);
         }
