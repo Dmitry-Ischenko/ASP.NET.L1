@@ -23,7 +23,7 @@ namespace Webstore.Services.Products.InSql
 
         public Brand GetBrandsById(int id)
         {
-            throw new NotImplementedException();
+            return _db.Brands.Include(brand => brand.Products).FirstOrDefault(brand => brand.Id == id);
         }
 
         public Product GetProductById(int id)
@@ -55,7 +55,7 @@ namespace Webstore.Services.Products.InSql
 
         public Category GetСategoriesById(int id)
         {
-            throw new NotImplementedException();
+            return _db.Categories.Include(category => category.Products).FirstOrDefault(category => category.Id == id);
         }
     }
 }
