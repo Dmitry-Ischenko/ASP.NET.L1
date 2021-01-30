@@ -7,13 +7,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Webstore.Interfaces.Services;
 using WebStore.Domain;
+using WebStore.Domain.DTO.Products;
 using WebStore.Domain.Entities;
 
 namespace WebStore.ServiceHosting.Controllers
 {
     [Route("api/products")]
     [ApiController]
-    public class ProductsApiController : ControllerBase, IProductData
+    public class ProductsApiController : ControllerBase, IProductDataDTO
     {
         private readonly IProductData _db;
         private readonly ILogger<ProductsApiController> _Logger;
@@ -25,38 +26,38 @@ namespace WebStore.ServiceHosting.Controllers
         }
 
         [HttpGet("brands")]
-        public IEnumerable<Brand> GetBrands()
+        public IEnumerable<BrandDTO> GetBrands()
         {
             return _db.GetBrands();
         }
 
         [HttpGet("brands/{id}")]
-        public Brand GetBrandsById(int id)
+        public BrandDTO GetBrandsById(int id)
         {
             throw new NotImplementedException();
         }
 
         [HttpGet("{id}")]
-        public Product GetProductById(int id)
+        public ProductDTO GetProductById(int id)
         {
             return _db.GetProductById(id);
         }
 
         
         [HttpPost]
-        public IEnumerable<Product> GetProducts([FromBody]ProductFilter Filter = null)
+        public IEnumerable<ProductDTO> GetProducts([FromBody]ProductFilter Filter = null)
         {
             return _db.GetProducts(Filter);
         }
 
         [HttpGet("categories")]
-        public IEnumerable<Category> GetСategories()
+        public IEnumerable<CategoryDTO> GetСategories()
         {
             return _db.GetСategories();
         }
 
         [HttpGet("categories/{id}")]
-        public Category GetСategoriesById(int id)
+        public CategoryDTO GetСategoriesById(int id)
         {
             throw new NotImplementedException();
         }
