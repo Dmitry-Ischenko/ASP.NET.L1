@@ -20,6 +20,7 @@ using Webstore.Services.Products.InSql;
 using WebStore.Client.Values;
 using WebStore.Interfaces.TestAPI;
 using WebStore.Client.Employees;
+using WebStore.Client.Products;
 
 namespace WebStore
 {
@@ -74,7 +75,8 @@ namespace WebStore
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSingleton<IEmployeesData, EmployeesClient>();
             //services.AddTransient<IProductData, InMemoryProductsData>();
-            services.AddTransient<IProductData, InSqIProductData>();            
+            //services.AddTransient<IProductData, InSqIProductData>();            
+            services.AddTransient<IProductData, ProductsClient>();
             services.AddSingleton<IBlogsData, InMemoryBlogsData>();
             services.AddScoped<ICartService, InCookiesCartService>();
             services.AddScoped<IOrderService, SqlOrderService>();

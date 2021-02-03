@@ -14,7 +14,7 @@ namespace WebStore.ServiceHosting.Controllers
 {
     [Route("api/products")]
     [ApiController]
-    public class ProductsApiController : ControllerBase, IProductDataDTO
+    public class ProductsApiController : ControllerBase, IProductData
     {
         private readonly IProductData _db;
         private readonly ILogger<ProductsApiController> _Logger;
