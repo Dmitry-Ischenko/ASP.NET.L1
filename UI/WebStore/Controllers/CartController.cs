@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Webstore.Interfaces.Services;
+using WebStore.Domain.DTO.Orders;
 using WebStore.Domain.ViewModels;
 
 namespace WebStore.Controllers
@@ -60,10 +61,18 @@ namespace WebStore.Controllers
                     Order = OrderModel
                 });
 
+            var create_order_model = new CreateOrderModel(
+                OrderModel,
+                _CartService.TransformFromCart().Items
+                   .Select(item => new OrderItemDTO(
+                        item.Product.Id,
+                        item.Product.Price,
+                        item.Quantity))
+                   .ToList());
+
             var order = await OrderService.CreateOrder(
                 User.Identity!.Name,
-                _CartService.TransformFromCart(),
-                OrderModel);
+                create_order_model);
 
             _CartService.Clear();
 

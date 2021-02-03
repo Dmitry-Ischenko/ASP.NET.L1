@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Webstore.DAL.Context;
 using Webstore.Interfaces.Services;
+using WebStore.Domain.DTO.Orders;
 using WebStore.Domain.Entities.Identity;
 using WebStore.Domain.Entities.Orders;
 using WebStore.Domain.ViewModels;
+using WebStore.Services.Mapping;
 
 namespace Webstore.Services.Products.InSql
 {
@@ -24,18 +26,18 @@ namespace Webstore.Services.Products.InSql
             _UserManager = UserManager;
         }
 
-        public async Task<IEnumerable<Order>> GetUserOrders(string UserName) => await _db.Orders
+        public async Task<IEnumerable<OrderDTO>> GetUserOrders(string UserName) => (await _db.Orders
            .Include(order => order.User)
            .Include(order => order.Items)
            .Where(order => order.User.UserName == UserName)
-           .ToArrayAsync();
+           .ToArrayAsync()).Select(o => o.ToDTO());
 
-        public async Task<Order> GetOrderById(int id) => await _db.Orders
+        public async Task<OrderDTO> GetOrderById(int id) => (await _db.Orders
            .Include(order => order.User)
            .Include(order => order.Items)
-           .FirstOrDefaultAsync(order => order.Id == id);
+           .FirstOrDefaultAsync(order => order.Id == id)).ToDTO();
 
-        public async Task<Order> CreateOrder(string UserName, CartViewModel Cart, OrderViewModel OrderModel)
+        public async Task<OrderDTO> CreateOrder(string UserName, CreateOrderModel OrderModel)
         {
             var user = await _UserManager.FindByNameAsync(UserName);
             if (user is null)
@@ -45,32 +47,27 @@ namespace Webstore.Services.Products.InSql
 
             var order = new Order
             {
-                Name = OrderModel.Name,
-                Address = OrderModel.Address,
-                Phone = OrderModel.Phone,
+                Name = OrderModel.Order.Name,
+                Address = OrderModel.Order.Address,
+                Phone = OrderModel.Order.Phone,
                 User = user,
                 Date = DateTime.Now,
             };
 
-            var product_ids = Cart.Items.Select(i => i.Product.Id).ToArray();
-            var cart_products = await _db.Products
-               .Where(p => product_ids.Contains(p.Id))
-               .ToArrayAsync();
+            foreach (var (id, _, quantity) in OrderModel.Items)
+            {
+                var product = await _db.Products.FindAsync(id);
+                if (product is null) continue;
 
-            var items =
-                from cart_item in Cart.Items
-                join product in cart_products
-                    on cart_item.Product.Id equals product.Id
-                select new OrderItem
+                var order_item = new OrderItem
                 {
                     Order = order,
                     Price = product.Price,
-                    Quantity = cart_item.Quantity,
+                    Quantity = quantity,
                     Product = product
                 };
-
-            foreach (var order_item in items)
                 order.Items.Add(order_item);
+            }
 
             await _db.Orders.AddAsync(order);
 
@@ -78,7 +75,7 @@ namespace Webstore.Services.Products.InSql
 
             await transaction.CommitAsync();
 
-            return order;
+            return order.ToDTO();
         }
     }
 }
