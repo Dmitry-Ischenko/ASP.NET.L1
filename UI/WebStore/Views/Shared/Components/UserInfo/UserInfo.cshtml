@@ -1,5 +1,5 @@
 ﻿@using WebStore.Domain.Entities.Identity
-<div><a href="#">@User.Identity!.Name</a></div>
+<div><a asp-controller="UserProfile" asp-action="Index">@User.Identity!.Name</a></div>
 @if (User.IsInRole(Role.Administrator))
 {
     <div><a asp-action="Index" asp-controller="Home" asp-area="Admin">Админка </a></div>
