@@ -5,7 +5,6 @@ using System.Linq;
 using WebStore.Domain;
 using WebStore.Domain.ViewModels;
 using WebStore.Domain.Entities;
-using WebStore.Domain.ViewModels;
 using Webstore.Interfaces.Services;
 using Webstore.Services.Mapping;
 
@@ -24,9 +23,9 @@ namespace WebStore.Controllers
                 СategoryId = CategoryID,
 
             };
-            var productc = _ProductData.GetProducts(filter);
-            var brends = _ProductData.GetBrands();
-            var categories = _ProductData.GetСategories();
+            var productc = _ProductData.GetProducts(filter).FromDTO();
+            var brends = _ProductData.GetBrands().FromDTO();
+            var categories = _ProductData.GetСategories().FromDTO();
             
 
 
@@ -73,7 +72,7 @@ namespace WebStore.Controllers
         }
         public IActionResult Product(int id)
         {
-            var product = _ProductData.GetProductById(id);
+            var product = _ProductData.GetProductById(id).FromDTO();
             if (product is null)
                 return NotFound();
             return View(product.ToView());

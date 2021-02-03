@@ -7,6 +7,8 @@ using Webstore.DAL.Context;
 using Webstore.Interfaces.Services;
 using WebStore.Domain;
 using WebStore.Domain.Entities;
+using Webstore.Services.Mapping;
+using WebStore.Domain.DTO.Products;
 
 namespace Webstore.Services.Products.InSql
 {
@@ -19,19 +21,19 @@ namespace Webstore.Services.Products.InSql
             _db = db;
         }
 
-        public IEnumerable<Brand> GetBrands() => _db.Brands.Include(brand => brand.Products);
+        public IEnumerable<BrandDTO> GetBrands() => _db.Brands.Include(brand => brand.Products).ToDTO();
 
-        public Brand GetBrandsById(int id)
+        public BrandDTO GetBrandsById(int id)
         {
-            return _db.Brands.Include(brand => brand.Products).FirstOrDefault(brand => brand.Id == id);
+            return _db.Brands.Include(brand => brand.Products).FirstOrDefault(brand => brand.Id == id).ToDTO();
         }
 
-        public Product GetProductById(int id)
+        public ProductDTO GetProductById(int id)
         {
-            return _db.Products.Include(p => p.Brand).Include(p => p.Category).FirstOrDefault(p => p.Id == id);
+            return _db.Products.Include(p => p.Brand).Include(p => p.Category).FirstOrDefault(p => p.Id == id).ToDTO();
         }
 
-        public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
+        public IEnumerable<ProductDTO> GetProducts(ProductFilter Filter = null)
         {
             IQueryable<Product> query = _db.Products.Include(p => p.Category).Include(p => p.Brand);
 
@@ -48,14 +50,14 @@ namespace Webstore.Services.Products.InSql
                     query = query.Where(product => product.CategoryId == Filter.СategoryId);
             }
 
-            return query;
+            return query.AsEnumerable().ToDTO();
         }
 
-        public IEnumerable<Category> GetСategories() => _db.Categories.Include(category => category.Products);
+        public IEnumerable<CategoryDTO> GetСategories() => _db.Categories.Include(category => category.Products).ToDTO();
 
-        public Category GetСategoriesById(int id)
+        public CategoryDTO GetСategoriesById(int id)
         {
-            return _db.Categories.Include(category => category.Products).FirstOrDefault(category => category.Id == id);
+            return _db.Categories.Include(category => category.Products).FirstOrDefault(category => category.Id == id).ToDTO();
         }
     }
 }
