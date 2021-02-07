@@ -22,6 +22,7 @@ using WebStore.Interfaces.TestAPI;
 using WebStore.Client.Employees;
 using WebStore.Client.Products;
 using WebStore.Client.Orders;
+using WebStore.Clients.Identity;
 
 namespace WebStore
 {
@@ -35,11 +36,8 @@ namespace WebStore
         public Startup(IConfiguration Configuration) => _Configuration = Configuration;
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<WebStoreDB>(opt => opt.UseSqlServer(_Configuration.GetConnectionString("Default")));
-            services.AddTransient<WebStoreDbInitializer>();
-
             services.AddIdentity<User, Role>()
-               .AddEntityFrameworkStores<WebStoreDB>()
+               .AddIdentityWebStoreWebAPIClients()
                .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(opt =>
@@ -75,22 +73,17 @@ namespace WebStore
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSingleton<IEmployeesData, EmployeesClient>();
-
-            //services.AddTransient<IProductData, InMemoryProductsData>();
-            //services.AddTransient<IProductData, InSqIProductData>();            
             services.AddTransient<IProductData, ProductsClient>();
             services.AddSingleton<IBlogsData, InMemoryBlogsData>();
             services.AddScoped<ICartService, InCookiesCartService>();
-            //services.AddScoped<IOrderService, SqlOrderService>();
             services.AddScoped<IOrderService, OrdersClient>();
             services.AddScoped<IValuesServices, ValuesClient>();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDbInitializer db)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            db.Initialize();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

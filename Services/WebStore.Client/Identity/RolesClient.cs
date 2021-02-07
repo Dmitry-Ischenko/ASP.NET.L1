@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Webstore.Interfaces;
 using WebStore.Client.Base;
 using WebStore.Domain.Entities.Identity;
 using WebStore.Interfaces.Services.Identity;
